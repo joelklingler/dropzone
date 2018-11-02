@@ -4,14 +4,8 @@
     <mat-card-subtitle>Eingetragene Springer für die nächsten Loads</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
-    <mat-selection-list 
-      cdkDropList
-      #queueList="cdkDropList"
-      [cdkDropListData]="queue"
-      [cdkDropListConnectedTo]="[loadList]"
-      class="example-list"
-      (cdkDropListDropped)="drop($event)">
-      <mat-list-option *ngFor="let jumper of jumpers" cdkDrag>
+    <mat-selection-list >
+      <mat-list-option *ngFor="let jumper of jumpers">
         <p>{{ jumper.firstName }} {{ jumper.lastName }}</p>
       </mat-list-option>
     </mat-selection-list>

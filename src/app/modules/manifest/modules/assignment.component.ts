@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { QueueItem } from 'src/app/models/QueueItem';
+import { Load } from 'src/app/models/Load';
+import { LoadService } from 'src/app/services/load.service';
 
 @Component({
   selector: 'app-manifest-modules-assignment',
@@ -20,10 +22,13 @@ export class AssignmentComponent implements OnInit {
     { loadId:1, person: { firstName: 'Kim', lastName: 'Bernhard' }},
     { loadId:1, person: { firstName: 'Sandro', lastName: 'Walther' }},
   ];
+
+  loads: Load[];
   
-  constructor() { }
+  constructor(private loadService: LoadService) { }
 
   ngOnInit() {
+    this.loads = this.loadService.getLoads();
   }
 
   drop(event: CdkDragDrop<string[]>) {

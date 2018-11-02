@@ -23,13 +23,13 @@
     <mat-grid-tile>
       <div class="manifest-module manifest-module-loads">
         <mat-accordion multi="true">
-          <mat-expansion-panel>
+          <mat-expansion-panel *ngFor="let load of loads">
             <mat-expansion-panel-header>
               <mat-panel-title>
-                  Load 1
+                  Load {{ load.id }}
               </mat-panel-title>
               <mat-panel-description>
-                  9/10
+                  {{load.jumpers.length}}/10
               </mat-panel-description>
             </mat-expansion-panel-header>
             <mat-list cdkDropList
