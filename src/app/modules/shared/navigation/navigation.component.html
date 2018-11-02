@@ -1,6 +1,9 @@
 <mat-toolbar color="primary" class="mat-elevation-z2">
   <img src='../../../assets/Logo.webp'/>
   <span>FGS Dropzone</span>
+  <span class="day-info">
+      {{ date }}
+    </span>
   <span class="fill-remaining-space"></span>
   <div class="navigation-actions">
     <button mat-button (click)="onSdlClick()">

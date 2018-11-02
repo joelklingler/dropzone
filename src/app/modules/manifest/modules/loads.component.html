@@ -19,6 +19,7 @@
         <mat-list-item *ngFor="let jumper of load.jumpers">
           <p>{{ jumper.firstName }} {{ jumper.lastName }}</p>
         </mat-list-item>
+        <p *ngIf="load.jumpers == 0">Keine Springer eingetragen</p>
       </mat-list>
     </mat-expansion-panel>
   </mat-accordion>

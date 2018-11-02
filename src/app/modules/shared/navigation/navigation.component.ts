@@ -7,9 +7,13 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./navigation.component.css']
 })
 export class NavigationComponent implements OnInit {
+  date: string;
 
   constructor(private route: ActivatedRoute, private router: Router) { }
+  
   ngOnInit() {
+    var today = new Date();
+    this.date = today.toLocaleDateString();
   }
 
   onSdlClick(): void {

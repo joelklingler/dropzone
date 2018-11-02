@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Load } from 'src/app/models/Load';
 import { LoadService } from 'src/app/services/load.service';
 
@@ -28,11 +28,10 @@ export class LoadsComponent implements OnInit {
 
   onShowCompletedLoadsCheckboxChanged() {
     this.showCompletedLoads = !this.showCompletedLoads;
-    console.log(this.showCompletedLoads);
   }
 
   onClickAddLoad() {
-    this._loads.push({ id: this.loads[this.loads.length + 1].id + 1, capacity: 10, isCompleted: false, jumpers: []});
+    //this._loads.push({ id: this._loads[this._loads.length -1].id + 1, capacity: 10, isCompleted: false, jumpers: []});
+    this.loadService.addLoad();
   }
-
 }

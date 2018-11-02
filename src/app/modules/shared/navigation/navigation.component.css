@@ -8,3 +8,7 @@ mat-toolbar img {
         Every toolbar row uses a flexbox row layout. */
     flex: 1 1 auto;
 }
+
+.day-info {
+    margin-left: 50px;
+}
