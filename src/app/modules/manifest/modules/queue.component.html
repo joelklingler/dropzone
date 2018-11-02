@@ -5,14 +5,8 @@
   </mat-card-header>
   <mat-card-content>
     <mat-list>
-      <mat-list-item>
-        Joèl Klingler
-      </mat-list-item>
-      <mat-list-item>
-        Michele Stüdeli
-      </mat-list-item>
-      <mat-list-item>
-        Cooler Schüler
+      <mat-list-item *ngFor="let jumper of jumpers">
+        <p>{{ jumper.firstName }} {{ jumper.lastName }}</p>
       </mat-list-item>
     </mat-list>
   </mat-card-content>
