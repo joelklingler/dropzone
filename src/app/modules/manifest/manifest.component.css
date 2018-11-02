@@ -6,7 +6,3 @@
 .manifest-layout {
     height: calc(100vh - 64px - 50px);
 }
-
-.manifest-module {
-    padding-left: 50px;
-}

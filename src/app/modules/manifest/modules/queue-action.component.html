@@ -1,0 +1,11 @@
+<div class="actions-container">
+  <mat-select placeholder="Ziel-Load" class="load-select" [(value)]="selectedLoadId">
+    <mat-option *ngFor="let load of loads" [value]="load.id">
+      Load {{load.id}}
+    </mat-option>
+  </mat-select>
+
+  <button mat-fab matTooltip="Load zuweisen" (click)="onClickAssign()">
+    <i class="material-icons">keyboard_arrow_right</i>
+  </button>
+</div>

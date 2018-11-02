@@ -1,0 +1,15 @@
+.load-select {
+    margin-bottom: 16px;
+    display: block;
+    width: 150px;
+}
+
+.actions-container {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+
+.actions-container button {
+    color: white;
+}

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Jumper } from 'src/app/models/Jumper';
-import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import { QueueService } from 'src/app/services/queue.service';
 
 @Component({
   selector: 'app-manifest-modules-queue',
@@ -9,14 +9,11 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/dr
 })
 export class QueueComponent implements OnInit {
 
-  jumpers: Jumper[] = [
-    { firstName: 'Michele', lastName: 'Stüdeli'},
-    { firstName: 'Joèl', lastName: 'Klingler'},
-    { firstName: 'Beni', lastName: 'Keller'}
-  ]
+  jumpers: Jumper[];
 
-  constructor() { }
+  constructor(private queueService: QueueService) { }
 
   ngOnInit() {
+    this.jumpers = this.queueService.getQueuedJumpers();
   }
 }
