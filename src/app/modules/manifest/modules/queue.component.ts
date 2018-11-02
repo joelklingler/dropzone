@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IJumper } from 'src/app/models/IJumper';
+import { Jumper } from 'src/app/models/Jumper';
 
 @Component({
   selector: 'app-manifest-modules-queue',
@@ -8,7 +8,7 @@ import { IJumper } from 'src/app/models/IJumper';
 })
 export class QueueComponent implements OnInit {
 
-  jumpers: IJumper[] = [
+  jumpers: Jumper[] = [
     { firstName: 'Michele', lastName: 'Stüdeli'},
     { firstName: 'Joèl', lastName: 'Klingler'},
     { firstName: 'Beni', lastName: 'Keller'}

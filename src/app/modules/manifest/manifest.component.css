@@ -1,10 +1,10 @@
 .container {
-    height: 100vh;
-    max-height: 100vh;
+    height: calc(100vh - 64px - 50px);
+    max-height: calc(100vh - 64px - 50px);
 }
 
-mat-grid-list {
-    height: calc(100% - 64px - 50px);
+.manifest-layout {
+    height: calc(100vh - 64px - 50px);
 }
 
 .manifest-module {

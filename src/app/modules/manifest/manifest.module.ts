@@ -3,18 +3,19 @@ import { CommonModule } from '@angular/common';
 import { MaterialModule } from '../shared/material.module';
 import { ManifestComponent } from './manifest.component';
 import { RouterModule } from '@angular/router';
-import { NavigationComponent } from './navigation/navigation.component';
 import { QueueComponent } from './modules/queue.component';
 import { LoadsComponent } from './modules/loads.component';
+import { JumperComponent } from '../jumper/jumper.component';
 
 @NgModule({
   imports: [
     CommonModule,
     MaterialModule,
     RouterModule.forChild([
-      { path:'test', component: ManifestComponent}
+      { path:'sdl', component: ManifestComponent },
+      { path:'jumper', component: JumperComponent }
     ])
   ],
-  declarations: [ManifestComponent, NavigationComponent, QueueComponent, LoadsComponent]
+  declarations: [ManifestComponent, QueueComponent, LoadsComponent]
 })
 export class ManifestModule { }

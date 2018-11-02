@@ -1,10 +1,13 @@
 <mat-toolbar color="primary" class="mat-elevation-z2">
   <img src='../../../assets/Logo.webp'/>
-  <span>FGS Manifest</span>
+  <span>FGS Dropzone</span>
   <span class="fill-remaining-space"></span>
   <div class="navigation-actions">
-    <button mat-button>
-      FGS Manifest
+    <button mat-button (click)="onSdlClick()">
+      SDL
+    </button>
+    <button mat-button (click)="onJumperClick()">
+      Jumper
     </button>
   </div>
 </mat-toolbar>

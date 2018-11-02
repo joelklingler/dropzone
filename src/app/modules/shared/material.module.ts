@@ -8,8 +8,9 @@ import {
   MatIconModule, 
   MatGridListModule, 
   MatCardModule, 
-  MatListModule
-} from '@angular/material'
+  MatListModule,
+  MatExpansionModule
+} from '@angular/material';
 
 @NgModule({
   imports: [
@@ -23,7 +24,8 @@ import {
     MatIconModule,
     MatGridListModule,
     MatCardModule,
-    MatListModule
+    MatListModule,
+    MatExpansionModule
   ],
   declarations: []
 })

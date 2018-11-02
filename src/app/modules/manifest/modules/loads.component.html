@@ -1,3 +1,28 @@
-<p>
-  loads works!
-</p>
+<div class="show-loads-control">
+  <mat-checkbox (click)="onShowCompletedLoadsCheckboxChanged()" [checked]="showCompletedLoads">Abgeschlossene Loads anzeigen</mat-checkbox>
+</div>
+<div class="loads-container">
+  <mat-accordion multi="true" class="loads-accordion">
+    <mat-expansion-panel class="load-panel" *ngFor="let load of loads" [expanded]="!load.isCompleted">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <i class="material-icons">{{ load.isCompleted ? 'done' : 'schedule'}}</i>
+          <span>Load {{ load.id }}</span>
+        </mat-panel-title>
+        <mat-panel-description>
+          <span class="{{ load.jumpers.length > load.capacity ? 'red' : '' }}">
+            {{ load.jumpers.length }} / {{ load.capacity }}
+          </span>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <mat-list>
+        <mat-list-item *ngFor="let jumper of load.jumpers">
+          <p>{{ jumper.firstName }} {{ jumper.lastName }}</p>
+        </mat-list-item>
+      </mat-list>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>
+<div class="loads-actions">
+  <button mat-fab (click)="onClickAddLoad()"><i class="material-icons">add</i></button>
+</div>
