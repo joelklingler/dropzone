@@ -3,7 +3,13 @@
 </div>
 <div class="loads-container">
   <mat-accordion multi="true" class="loads-accordion">
-    <mat-expansion-panel class="load-panel" *ngFor="let load of loads" [expanded]="!load.isCompleted">
+    <mat-expansion-panel class="load-panel" *ngFor="let load of loads" [expanded]="!load.isCompleted"
+      cdkDropList
+      #doneList="cdkDropList"
+      [cdkDropListData]="load"
+      [cdkDropListConnectedTo]="[queueList]"
+      class="example-list"
+      (cdkDropListDropped)="drop($event)">
       <mat-expansion-panel-header>
         <mat-panel-title>
           <i class="material-icons">{{ load.isCompleted ? 'done' : 'schedule'}}</i>
@@ -25,5 +31,5 @@
   </mat-accordion>
 </div>
 <div class="loads-actions">
-  <button mat-fab (click)="onClickAddLoad()"><i class="material-icons">add</i></button>
+  <button mat-fab matTooltip="Neuer Load" (click)="onClickAddLoad()"><i class="material-icons">add</i></button>
 </div>

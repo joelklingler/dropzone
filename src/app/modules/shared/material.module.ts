@@ -9,8 +9,13 @@ import {
   MatGridListModule, 
   MatCardModule, 
   MatListModule,
-  MatExpansionModule
+  MatExpansionModule,
+  MatSnackBarModule,
+  MatBadgeModule,
+  MatTooltipModule,
+  MatSelectModule,
 } from '@angular/material';
+import { DragDropModule } from '@angular/cdk/drag-drop'
 
 @NgModule({
   imports: [
@@ -25,7 +30,12 @@ import {
     MatGridListModule,
     MatCardModule,
     MatListModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatSnackBarModule,
+    MatBadgeModule,
+    MatTooltipModule,
+    MatSelectModule,
+    DragDropModule
   ],
   declarations: []
 })
