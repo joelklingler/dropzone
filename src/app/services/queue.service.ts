@@ -1,5 +1,6 @@
 import { Jumper } from "../models/Jumper";
 import { Injectable } from "@angular/core";
+import { Observable, Subscriber } from "rxjs";
 
 @Injectable({
     providedIn: 'root'
@@ -12,7 +13,7 @@ export class QueueService {
         { firstName: 'Martin', lastName: 'Durrer', isSelectedFromQueue: false}
       ];
 
-    getQueuedJumpers(): Jumper[] {
+    getJumpers(): Jumper[] {
         return this.queue;
     }
 }

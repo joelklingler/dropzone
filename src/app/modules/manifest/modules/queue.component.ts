@@ -14,6 +14,6 @@ export class QueueComponent implements OnInit {
   constructor(private queueService: QueueService) { }
 
   ngOnInit() {
-    this.jumpers = this.queueService.getQueuedJumpers();
+    this.jumpers = this.queueService.getJumpers();
   }
 }

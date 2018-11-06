@@ -11,8 +11,8 @@ import { Jumper } from 'src/app/models/Jumper';
 })
 export class QueueActionComponent implements OnInit {
 
-  loads: Load[];
-  selectedLoadId: number;
+  private loads: Load[];
+  private selectedLoadId: number;
 
   constructor(private loadService: LoadService, private queueService: QueueService) { }
 
@@ -27,7 +27,7 @@ export class QueueActionComponent implements OnInit {
   }
 
   onClickAssign() {
-    let queuedJumpers = this.queueService.getQueuedJumpers();
+    let queuedJumpers: Jumper[] = this.queueService.getJumpers();
     let selectedJumpers = queuedJumpers.filter((jumper: Jumper) => jumper.isSelectedFromQueue);
     console.log(selectedJumpers);
     console.log(queuedJumpers);

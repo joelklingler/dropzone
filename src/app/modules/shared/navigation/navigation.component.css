@@ -1,3 +1,8 @@
+mat-toolbar {
+    padding-left: 10vw;
+    padding-right: 10vw;
+}
+
 mat-toolbar img {
     max-height: 54px;
     margin: 5px;
