@@ -11,9 +11,16 @@ export class QueueComponent implements OnInit {
 
   jumpers: Jumper[];
 
-  constructor(private queueService: QueueService) { }
+  constructor(private queueService: QueueService) {
+  }
 
   ngOnInit() {
     this.jumpers = this.queueService.getJumpers();
+  }
+
+  selectionChanged(e, v) {
+    let selectionChangedElement = e.option.value;
+    let selectionChangedValue = e.option.selected;
+    this.jumpers[selectionChangedElement].isSelectedFromQueue = selectionChangedValue;
   }
 }

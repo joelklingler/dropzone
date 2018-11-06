@@ -1,5 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Load } from "../models/Load";
+import { Jumper } from "../models/Jumper";
 
 @Injectable({
     providedIn: 'root'
@@ -10,27 +11,10 @@ export class LoadService {
 
     getLoads(): Load[] {
         this.loads = [
-            { id: 1, capacity: 10, isCompleted: true, jumpers: [ 
-                { firstName: "Kim", lastName: "Bernhard", isSelectedFromQueue: false },
-                { firstName: "Timo", lastName: "Bernhard", isSelectedFromQueue: false},
-                { firstName: "Sandro", lastName: "Walther", isSelectedFromQueue: false },
-                { firstName: "Martin", lastName: "Durrer", isSelectedFromQueue: false}
-             ] },
-            { id: 2, capacity: 10, isCompleted: true, jumpers: [
-                { firstName: "Kim", lastName: "Bernhard", isSelectedFromQueue: false },
-                { firstName: "Timo", lastName: "Bernhard", isSelectedFromQueue: false},
-                { firstName: "Sandro", lastName: "Walther", isSelectedFromQueue: false },
-                { firstName: "Martin", lastName: "Durrer", isSelectedFromQueue: false}] },
-            { id: 3, capacity: 9, isCompleted: false, jumpers: [
-                { firstName: "Kim", lastName: "Bernhard", isSelectedFromQueue: false },
-                { firstName: "Timo", lastName: "Bernhard", isSelectedFromQueue: false},
-                { firstName: "Sandro", lastName: "Walther", isSelectedFromQueue: false },
-                { firstName: "Martin", lastName: "Durrer", isSelectedFromQueue: false}] },
-            { id: 4, capacity: 10, isCompleted: false, jumpers: [
-                { firstName: "Kim", lastName: "Bernhard", isSelectedFromQueue: false },
-                { firstName: "Timo", lastName: "Bernhard", isSelectedFromQueue: false},
-                { firstName: "Sandro", lastName: "Walther", isSelectedFromQueue: false },
-                { firstName: "Martin", lastName: "Durrer", isSelectedFromQueue: false}] }
+            { id: 1, capacity: 10, isCompleted: true, jumpers: [] },
+            { id: 2, capacity: 10, isCompleted: true, jumpers: [] },
+            { id: 3, capacity: 9, isCompleted: false, jumpers: [] },
+            { id: 4, capacity: 10, isCompleted: false, jumpers: [] }
         ];
         return this.loads;
     }
@@ -44,5 +28,21 @@ export class LoadService {
         load.jumpers = [];
         
         this.loads.push(load);
+    }
+
+    addJumpersToLoad(jumpers: Jumper[], loadId: number): boolean {
+        let load = this.loads.find((load: Load) => load.id == loadId);
+        
+        let loadCapacity = load.capacity;
+        let jumpersInLoad = load.jumpers.length;
+        
+        if(jumpersInLoad + jumpers.length > loadCapacity) {
+            return false;
+        } else {
+            jumpers.forEach(jumper => {
+                load.jumpers.push(jumper);
+            });
+            return true;
+        }
     }
 }

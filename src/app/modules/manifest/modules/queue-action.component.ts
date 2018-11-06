@@ -3,6 +3,7 @@ import { LoadService } from 'src/app/services/load.service';
 import { Load } from 'src/app/models/Load';
 import { QueueService } from 'src/app/services/queue.service';
 import { Jumper } from 'src/app/models/Jumper';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-manifest-modules-queue-action',
@@ -14,7 +15,7 @@ export class QueueActionComponent implements OnInit {
   private loads: Load[];
   private selectedLoadId: number;
 
-  constructor(private loadService: LoadService, private queueService: QueueService) { }
+  constructor(private loadService: LoadService, private queueService: QueueService, public snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.initLoads();
@@ -29,8 +30,16 @@ export class QueueActionComponent implements OnInit {
   onClickAssign() {
     let queuedJumpers: Jumper[] = this.queueService.getJumpers();
     let selectedJumpers = queuedJumpers.filter((jumper: Jumper) => jumper.isSelectedFromQueue);
-    console.log(selectedJumpers);
-    console.log(queuedJumpers);
+    let targetLoad = this.selectedLoadId;
+    
+    let suc = this.loadService.addJumpersToLoad(selectedJumpers, targetLoad);
+
+    if(suc) {
+      // Remove jumpers from queue
+      this.queueService.removeJumpers(selectedJumpers);
+    } else {
+      this.snackBar.open(`Kapazität von Load ${targetLoad} nicht ausreichend für ${selectedJumpers.length} neue Springer.`, null, { duration: 3000 });
+    }
   }
 
 }

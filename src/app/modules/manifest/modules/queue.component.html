@@ -5,11 +5,12 @@
   </mat-card-header>
   <mat-card-content>
     <div class="queue-content">
-      <mat-selection-list >
-        <mat-list-option *ngFor="let jumper of jumpers" [(selected)]="jumper.isSelectedFromQueue" >
+      <mat-selection-list #queue (selectionChange)="selectionChanged($event, queue.selectedOptions)">
+        <mat-list-option *ngFor="let jumper of jumpers" [selected]="jumper.isSelectedFromQueue" [value]="jumpers.indexOf(jumper)" >
           <p>{{ jumper.firstName }} {{ jumper.lastName }}</p>
         </mat-list-option>
       </mat-selection-list>
+      <p *ngIf="jumpers.length === 0">Keine Springer in der Warteliste</p>
     </div>
   </mat-card-content>
 </mat-card>
