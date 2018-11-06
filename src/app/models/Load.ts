@@ -5,6 +5,7 @@ export class Load {
     capacity: number;
     isCompleted: boolean;
     jumpers: Jumper[];
+    canBeCompleted: boolean;
 
     constructor() {
 

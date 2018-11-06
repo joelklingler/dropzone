@@ -41,3 +41,7 @@ mat-panel-title span {
 .loads-actions button.mat-fab {
     color: white;
 }
+
+.unasign-btn {
+    margin-left: -30px;
+}

@@ -17,10 +17,18 @@
       </mat-expansion-panel-header>
       <mat-list>
         <mat-list-item *ngFor="let jumper of load.jumpers">
+          <button *ngIf="!load.isCompleted" class="unasign-btn" mat-icon-button matTooltip="Zurück in die Warteliste verschieben." (click)="moveToQueue(jumper.id, load.id)">
+            <mat-icon>chevron_left</mat-icon>
+          </button>
           <p>{{ jumper.firstName }} {{ jumper.lastName }}</p>
         </mat-list-item>
         <p *ngIf="load.jumpers == 0">Keine Springer eingetragen</p>
       </mat-list>
+      <mat-action-row *ngIf="!load.isCompleted">
+        <button class="unasign-btn" mat-icon-button matTooltip="Load abschliessen" (click)="completeLoad(load.id)" [disabled]="!load.canBeCompleted">
+          <mat-icon>flight_takeoff</mat-icon>
+        </button>
+      </mat-action-row>
     </mat-expansion-panel>
   </mat-accordion>
 </div>

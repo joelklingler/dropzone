@@ -1,14 +1,15 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Load } from 'src/app/models/Load';
 import { LoadService } from 'src/app/services/load.service';
 import { MatSnackBar } from '@angular/material';
+import { Jumper } from 'src/app/models/Jumper';
+import { QueueService } from 'src/app/services/queue.service';
 
 @Component({
   selector: 'app-manifest-modules-loads',
   templateUrl: './loads.component.html',
   styleUrls: [
-    './loads.component.css',
-    './loads.dragdrop.component.css']
+    './loads.component.css']
 })
 export class LoadsComponent implements OnInit {
   
@@ -23,7 +24,7 @@ export class LoadsComponent implements OnInit {
     this._loads = value;
   }
 
-  constructor(private loadService: LoadService, public snackBar: MatSnackBar) { }
+  constructor(private loadService: LoadService, public snackBar: MatSnackBar, private queueService: QueueService) { }
 
   ngOnInit() {
     this.loads = this.loadService.getLoads();
@@ -39,5 +40,13 @@ export class LoadsComponent implements OnInit {
     this.snackBar.open(`Load ${this._loads[this._loads.length - 1].id} erstellt.`, null, { duration: 2000 });
   }
 
-  
+  moveToQueue(jumperId: number, loadId: number) {
+    this.loadService.removeJumperFromLoad(jumperId, loadId);
+    this.queueService.addJumper(jumperId);
+  }
+
+  completeLoad(loadId: number) {
+    this.loadService.completeLoad(loadId);
+  }
 }
+
